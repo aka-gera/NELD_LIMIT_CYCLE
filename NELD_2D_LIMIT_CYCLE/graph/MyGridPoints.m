@@ -1,0 +1,19 @@
+function MyGridPoints(L,dat) 
+ 
+P = dat.PP;
+lw = dat.GridMarkerWidth;
+mColor = dat.GridColor;
+mEdge = dat.GridEdge;
+
+LL =  L*P'    ;
+ 
+inds = LL(1,:)<dat.xmax & LL(1,:)>dat.xmin ...
+   & LL(2,:)<dat.ymax & LL(2,:)>dat.ymin ...
+& LL(3,:)<dat.zmax & LL(3,:)>dat.zmin;
+LB=LL(:,inds) ;
+
+scatter3(LB(1,:),LB( 2,:),LB(3,:),...
+    'Marker',mEdge,...
+    'LineWidth',lw,...
+    'MarkerEdgeColor',mColor,...
+    'MarkerFaceColor',mColor) 
